@@ -1,7 +1,7 @@
 const credentials = $.extend(Repository, {
 
     add : function (credential) {
-        if (credential.hasOwnProperty("resourceId") && $.trim(credential.resourceId) !== "") {
+        if (credential.hasOwnProperty("credentialId") && $.trim(credential.credentialId) !== "") {
             this.edit(credential,
                 function (response) {
                     $('#credentialModal').trigger("modal:close");
@@ -42,7 +42,7 @@ const credentials = $.extend(Repository, {
     decryptPassword : function (credential, callback) {
 
         $.ajax({
-            url: `${this.endpoint}/${credential.resourceId}`,
+            url: `${this.endpoint}/${credential.credentialId}`,
             type: 'get',
             headers: {
                 'X-CSRF-TOKEN': credential._csrf,
@@ -91,7 +91,7 @@ function addCredentialModal() {
 function editCredentialModal(credentialId, url, username) {
     const data = {
         _csrf : $('input[name ="_csrf"]').val(),
-        resourceId : credentialId
+        credentialId : credentialId
     }
 
     // Handle password decrypting ...

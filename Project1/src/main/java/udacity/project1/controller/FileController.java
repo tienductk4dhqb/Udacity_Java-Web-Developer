@@ -41,9 +41,9 @@ public class FileController {
             errors.add("File field must not be empty.");
 
         model.addAttribute("success", true);
-        var UID = userService.getUser(authentication.getName()).getUserId();
+        int UID = userService.getUser(authentication.getName()).getUserId();
         try {
-            var file = new File(
+            File file = new File(
                 multipartFile.getOriginalFilename(),
                 multipartFile.getSize(),
                 multipartFile.getContentType(),
@@ -83,8 +83,8 @@ public class FileController {
         Authentication authentication,
         @PathVariable Integer fileId
     ) {
-        var UID = userService.getUser(authentication.getName()).getUserId();
-        var file   = fileService.get(new File(fileId, UID));
+        int UID = userService.getUser(authentication.getName()).getUserId();
+        File file   = fileService.get(new File(fileId, UID));
         if (file != null) {
             return ResponseEntity.ok()
                 .contentType(MediaType.parseMediaType(file.getContentType()))
@@ -102,7 +102,7 @@ public class FileController {
         @PathVariable Integer fileId,
         Model model
     ) {
-        var UID = userService.getUser(authentication.getName()).getUserId();
+        int UID = userService.getUser(authentication.getName()).getUserId();
         List<String> errors = new ArrayList<String>();
         model.addAttribute("success", true);
         try {

@@ -29,3 +29,22 @@ INSERT INTO NOTES VALUES(null, 'Note3', 'Note Description 3', '1');
 INSERT INTO NOTES VALUES(null, 'Note4', 'Note Description 4', '1');
 INSERT INTO NOTES VALUES(null, 'Note5', 'Note Description 5', '1');
 
+/*
+CREATE TABLE IF NOT EXISTS CREDENTIALS (
+    id INT PRIMARY KEY auto_increment,
+    url VARCHAR(100),
+    username VARCHAR (30),
+    key VARCHAR,
+    password VARCHAR,
+    userid INT,
+    foreign key (userid) references USERS(userid)
+);
+*/
+
+/*
+INSERT INTO CREDENTIALS VALUES(null, 'URL 1', 'User1', 'GQFjNaTK+bUMKMV2JNqTJQ==', 'FKRs0pbdF75gFi7hCnGVrg==', 1);
+INSERT INTO CREDENTIALS VALUES(null, 'URL 2', 'User1', 'GQFjNaTK+bUMKMV2JNqTJQ==',  'FKRs0pbdF75gFi7hCnGVrg==', 1);
+INSERT INTO CREDENTIALS VALUES(null, 'URL 3', 'User1', 'GQFjNaTK+bUMKMV2JNqTJQ==',  'FKRs0pbdF75gFi7hCnGVrg==', 1);
+INSERT INTO CREDENTIALS VALUES(null, 'URL 4', 'User1', 'GQFjNaTK+bUMKMV2JNqTJQ==',  'FKRs0pbdF75gFi7hCnGVrg==', 1);
+INSERT INTO CREDENTIALS VALUES(null, 'URL 5', 'User1', 'GQFjNaTK+bUMKMV2JNqTJQ==',  'FKRs0pbdF75gFi7hCnGVrg==', 1);
+*/

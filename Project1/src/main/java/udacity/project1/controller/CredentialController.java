@@ -76,12 +76,13 @@ public class CredentialController {
         );
 
         var errors = validate(data);
-        model.addAttribute("success", true);
         if (!errors.isEmpty()) {
             model.addAttribute("errors", errors);
             model.addAttribute("success", false);
-
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        } else {
+        	model.addAttribute("success", true);
+            model.addAttribute("content", "Create Credential Success!");
         }
 
         return "result";
@@ -106,12 +107,13 @@ public class CredentialController {
         );
 
         var errors = validate(data);
-        model.addAttribute("success", true);
         if (!errors.isEmpty()) {
             model.addAttribute("errors", errors);
             model.addAttribute("success", false);
-
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        } else {
+        	model.addAttribute("success", true);
+            model.addAttribute("content", "Update Credential Success!");
         }
 
         return "result";
@@ -126,6 +128,7 @@ public class CredentialController {
     ) {
         var errors = new ArrayList<String>();
         model.addAttribute("success", true);
+        model.addAttribute("content", "Delete Credential Success!");
         try {
             var UID = users.getUser(authentication.getName()).getUserId();
             credentials.remove(new Credential(credentialId, UID));

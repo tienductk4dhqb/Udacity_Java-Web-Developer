@@ -12,7 +12,7 @@
 
         <div id="resultMessageContent" class="container justify-content-center w-50 p-3" style="margin-top: 5em;">
             <div th:if="${success}" class="alert alert-success fill-parent">
-                <span>Your changes were successfully saved.</span>
+                <span th:text="${content}"></span>
             </div>
 
             <!--div th:if="${!success}" class="alert alert-danger fill-parent">

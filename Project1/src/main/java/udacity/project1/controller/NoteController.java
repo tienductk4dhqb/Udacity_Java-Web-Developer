@@ -57,12 +57,14 @@ public class NoteController {
         );
 
         var errors = validate(data);
-        model.addAttribute("success", true);
         if (!errors.isEmpty()) {
             model.addAttribute("errors", errors);
             model.addAttribute("success", false);
 
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        } else {
+        	model.addAttribute("success", true);
+            model.addAttribute("content", "Create Note Success!");
         }
 
         return "result";
@@ -86,18 +88,20 @@ public class NoteController {
         );
 
         var errors = validate(data);
-        model.addAttribute("success", true);
         if (!errors.isEmpty()) {
             model.addAttribute("errors", errors);
             model.addAttribute("success", false);
 
             response.setStatus(HttpServletResponse.SC_BAD_REQUEST);
+        } else {
+        	model.addAttribute("success", true);
+            model.addAttribute("content", "Update Note Success!");
         }
 
         return "result";
     }
 
-    @RequestMapping(value="/home/", method=RequestMethod.DELETE)
+    @DeleteMapping(value = "/{noteId}")
     public String removeView(
         HttpServletResponse response,
         @PathVariable Integer noteId,
@@ -106,6 +110,7 @@ public class NoteController {
     ) {
         List<String> errors = new ArrayList<String>();
         model.addAttribute("success", true);
+        model.addAttribute("content", "Delete Note Success!");
         try {
             var UID = userService.getUser(authentication.getName()).getUserId();
             noteService.remove(new Note(noteId, UID));

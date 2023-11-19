@@ -1,7 +1,7 @@
 const notes = $.extend(Repository, {
 
-    add : function (note) {
-        if (note.hasOwnProperty("resourceId") && $.trim(note.resourceId) !== "") {
+    addNote : function (note) {
+        if (note.hasOwnProperty("noteId") && $.trim(note.noteId) !== "") {
             this.edit(note,
                 function (response) {
                     $('#noteModal').trigger("modal:close");
@@ -39,10 +39,10 @@ const notes = $.extend(Repository, {
 
     },
 
-    remove : function (note) {
+    removeNote : function (note) {
         this._delete(note,
             function (response) {
-                $('#noteModal').trigger("modal:close");
+//                $('#noteModal').trigger("modal:close");
                 $('#alertModal').trigger("response:show", response);
                 $('.alert-close').click(function () {
                     $('body').trigger("page:reload");
@@ -75,7 +75,7 @@ function deleteNote(noteId) {
 
     const fragment = $('#notes-form').attr('action');
     notes.targetResource(fragment);
-    notes.remove(data);
+    notes.removeNote(data);
 
 }
 
@@ -85,10 +85,10 @@ $('#noteModal')
         $(this).modal('toggle');
 
     })
-    .on("notes:add", function (event, data, fragment) {
+    .on("notes:addNote", function (event, data, fragment) {
         event.preventDefault();
         notes.targetResource(fragment);
-        notes.add(data);
+        notes.addNote(data);
 
     });
 
@@ -103,5 +103,5 @@ $('#save-note').click(function () {
     );
 
     object._csrf = $('input[name ="_csrf"]').val();
-    $('#noteModal').trigger("notes:add", [object, form.attr('action')]);
+    $('#noteModal').trigger("notes:addNote", [object, form.attr('action')]);
 });
