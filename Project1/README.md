@@ -47,3 +47,9 @@ Write a test that deletes a note and verifies that the note is no longer display
 Write a test that creates a set of credentials, verifies that they are displayed, and verifies that the displayed password is encrypted.
 Write a test that views an existing set of credentials, verifies that the viewable password is unencrypted, edits the credentials, and verifies that the changes are displayed.
 Write a test that deletes an existing set of credentials and verifies that the credentials are no longer displayed.
+
+## User Login Default:
+1. user1/123
+2. user2/123
+3. user3/123
+
