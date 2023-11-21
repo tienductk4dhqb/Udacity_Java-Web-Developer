@@ -1,4 +1,4 @@
-package com.udacity.cloudstorage;
+package udacity.project1;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.junit.jupiter.api.*;
